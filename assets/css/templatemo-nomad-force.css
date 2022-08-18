@@ -5,6 +5,14 @@ TemplateMo 567 Nomad Force
 https://templatemo.com/tm-567-nomad-force
 
 */
+@font-face {
+  font-family: arslan;
+  src: url(../fonts/Arslan/arslan.ttf);
+  font-weight: normal;
+}
+.text-white.mt-5.mb-lg-4 {
+  font-family: arslan;
+}
 
 /*---------------------------------------
   CUSTOM PROPERTIES ( VARIABLES )             
