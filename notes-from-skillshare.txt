@@ -1,0 +1,75 @@
+1- site needs post.hbs and index.hbs, a site is simply a collection of posts.
+default.hbs is a main wrapper for all other template (like it has header and footer code)
+in the default.hbs {{{ body }}} means insert the template content inside this body tag for example
+index hbs content will be inserted inside {{{body}}} in default.hbs.
+to require the default.hbs as the main wrapper for any template e.g: post.hbs or index.hbs you need to insert 
+at first line {{!< default}} which will use default.hbs as the main wrapper of the template you are using.
+@site is global variable to use anywhere.
+routes:
+  /: landing  ==> now this is the home page localhost:2358/
+
+collections: 
+  /blog/:     ==> now this will load index.hbs template
+    permalink: /blog/{slug}/
+    template: index
+
+taxonomies:  ==> filter posts by tag or by author
+  tag: /tag/{slug}/      ==> localhost/tag/example-post ==> will show tag-example-post.hbs or fallout to tag.hbs or fallout to index.hbs
+  author: /author/{slug}/  ==> localhost/author/khaled  ==> will show  author-khaled.hbs or fallout to author.hbs or fallout to index.hbs
+
+  N.B: tag-example2.hbs to create a custom tag template the template has to start with tag-
+       author-ali.hbs to create a custom tag template the template has to start with author-
+
+  N.B2: setting custom template for a post or page is :
+        custom-mytemplate.hbs and then in the ghost admin you can choose default template or mytemplate for any post or a page.
+        if there is no custom-mytemplate the post will default to post.hbs
+        if there is no custom-mytemplate the page will default to page.hbs if not then will default to post.hbs
+
+  N.B3: you can set a template for a specefic post by creating:
+        post-myfavpost.hbs which will render that post @localhost/blog/myfavpost if not will default to post.hbs template @localhost/blog/myfavpost (if you created that myfavpost on ghost admin otherwise 404 error) UNLESS
+        there is a custom-template that myfavpost was assigned to from ghost admin and will render localhost/blog/myfavpost otherwise will use post.hbs  template @localhost/blog/myfavpost
+
+  N.B4: you can set a template for a specefic page by creating:
+        page-myfavpage.hbs which will render localhost/myfavpage if it does not exist will show localhost/myfavpage (if you created one on ghost admin otherewise 404 error page does not exist) on default template @localhost/myfavpage UNLESS
+        there is a custom-mytemplate that you chose for that myfavpage page instead of default if not will default to page.hbs template @localhost/myfavpage using the template from page.hbs if not will default to post.hbs template @localhost/myfavpage 
+
+if you have a landing.hbs in the routes it will overrule going to index.hbs at root
+look at diagram at ghost-template-structure.jpg any custom post/page/ will overrule defaulting to index.hbs or post.hbs
+
+
+Collection: 
+is all the posts you have, but what if want to differentiate the url depending on tag ?
+you go to each post in ghost admin, in 'tag' section the first tag will be primary tag of the post so if i want to differentiate my posts
+using 'blog' primary tag or 'podcast' primary tag in my routes.yaml it will be like this:
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: index (or blog if you created a blog.hbs template)
+    filter: primary_tag:blog
+  /podcast/:
+    permalink: /podcast/{slug}/
+    template: index (podcast if you created a podcast.hbs template)
+    filter: primary_tag:podcast
+
+
+Channels: it is a url for a custom search of your posts:
+routes:
+  /: landing
+  /special-page/: special-page ==> this is a special-page.hbs we created
+  /custom-channel/:
+    controller: channel
+    filter: tag:mytag+primary_author:khaled  ==> this will show all posts that have primary tag 'mytag' and primary author 'khaled'
+  /apple-news/:
+    controller: channel
+    template: apple (instead of defaulting to index.hbs we create apple.hbs template for this channel)
+    filter: tag:[iphone,ipad,mac]
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: index (or blog if you created a blog.hbs template)
+    filter: primary_tag:blog
+  /podcast/:
+    permalink: /podcast/{slug}/
+    template: index (podcast if you created a podcast.hbs template)
+    filter: primary_tag:podcast
