@@ -1,4 +1,4 @@
-1- site needs post.hbs and index.hbs, a site is simply a collection of posts.
+d1- site needs post.hbs and index.hbs, a site is simply a collection of posts.
 default.hbs is a main wrapper for all other template (like it has header and footer code)
 in the default.hbs {{{ body }}} means insert the template content inside this body tag for example
 index hbs content will be inserted inside {{{body}}} in default.hbs.
@@ -73,3 +73,203 @@ collections:
     permalink: /podcast/{slug}/
     template: index (podcast if you created a podcast.hbs template)
     filter: primary_tag:podcast
+
+
+------------------------------------------------------------------------------------------------------
+------------------------------------------CONTEXTS----------------------------------------------------
+context: is the available data in each template.
+
+1- index.hbs example (to loop through posts):
+{{!< default}} //use the default.hbs wrapper></default>
+
+<div class="page-width">
+  <h1>All posts</h1>
+  <p>Here you will find all posts</p>
+
+  <div class="posts>
+    {{#foreach posts}}    //will loop through posts using the foreach helper method
+      <div class="post-card card">
+        {{#if feature_image}}           //feature_image ghost helper method the cover image associated with the post
+          <img src="{{img_url feature_image size="m"}}"  //img-url helper e.g: to output a URL for a post’s feature image{{img_url feature_image}}
+          {{#if feature_image_alt}}alt="{{feature_image_alt}}"          //alt text for the cover image associated with the post
+          {{/if}}
+        class = "post-card-image card-img-top"
+        {{else}}
+          <img src="https://via.placeholder.com/399x243"
+        {{/if}}
+        
+        // if the post does not have feature img, post the title and post url
+
+        <div class=card-body">
+          <h5 class="card-title">
+            <a href="{{url}}>
+              {{title}}
+            </a>
+          </h5>
+          <p class=card-text">{{ excerpt  }}</p>
+        </div>   
+      </div>
+    {{/foreach}}
+  </div>    
+</div>
+
+2- post.hbs: 
+{{!< default}}
+
+<div class="page-width">
+  {{#post}} //to access Post object attributes(e.g: excerpt, title, etc..) it has to be inside {{post}}{{/post}} block expression.
+    <header class="post-header">
+      <h1 class="post-title">
+        {{title}}
+      </h1>
+      <span>{{  date published_at format=MMMM DD, YYYY  }}</span> //date helper {{date value format="formatString"}}
+    </header>
+    <section class="post-content">
+      {{content}}
+    </section>
+  {{/post}}
+</div>
+
+
+3- page.hbs // it will default to post.hbs if not defined as previously or we define it almost same as post but no date:
+
+<div class="page-width">
+  {{#post}} 
+  <header class="post-header">
+     <h1 class="post-title">
+      {{title}}
+    </h1>
+  </header>
+  <section class="post-content">
+    {{content}}
+  </section>
+  {{/post}}
+</div>
+
+
+4- author.hbs ( note that you can access the object attributes by using author.id or inside {{author}}{{/author}} block)
+
+<!-- Everything inside the #author tags pulls data from the author -->
+{{!< default}}
+
+<div class="page-header">
+  <h1>all posts by {{author.name}}</h1>
+</div>
+{{#author}}
+<header>
+  {{#if profile_image}}
+  <img src="{{img_url profile_image}}" alt="{{name}}'s Picture" />
+  {{/if}}
+</header>
+
+<section class="author-profile">
+  <h1 class="author-title">{{name}}</h1>
+  {{#if bio}}<h2 class="author-bio">{{bio}}</h2>{{/if}}
+
+  <div class="author-meta">
+    {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}} //plural is helper that if there no pages says no post, if 1 page
+  </div>                                                                               // will say 1 post if plural will output n pagess
+</section>
+{{/author}}
+
+then for example we can show the list of posts as in index.hbs :
+P.S: because you are in author.hbs it will automatically only display the list written by that author.name
+P.S2: the {{foreach}} loop does not have to be inside the {{author}}{{/author}} block to show only the author's post <----------
+<div class="posts>
+    {{#foreach posts}}
+      <div class=" post-card card">
+      {{#if feature_image}} 
+        <img src="{{img_url feature_image size=" m"}}" 
+          {{#if feature_image_alt}}alt="{{feature_image_alt}}"{{/if}} 
+          class="post-card-image card-img-top"
+      {{else}} 
+        <img src="https://via.placeholder.com/399x243" 
+    {{/if}}  
+  
+  <div class=card-body">
+    <h5 class="card-title">
+      <a href="{{url}}>
+          {{title}}
+      </a>
+    </h5>
+    <p class=card-text">{{ excerpt }}</p>
+ </div>
+</div>
+  {{/foreach}}
+</div>
+</div>
+
+
+
+5- tag.hbs
+same as author code but replace author by tag:
+<header>
+  {{#if feature_image}}
+  <img src="{{img_url feature_image}}" alt="{{name}}'s Tag" />
+  {{/if}}
+</header>
+
+
+------------------------------------------------------------------------------------------------------
+--------------------------------------------Partials--------------------
+1- partials is reusable code so for e.g: the code inside the {{#foreach}} loop is repeated in index.hbs, author.hbs, tag.hbs so we can make it a partial:
+in root create a folder called partials
+create a file called post-card.hbs and put inside it:
+<div class=" post-card card">
+  {{#if feature_image}}
+  <img src="{{img_url feature_image size=" m"}}" {{#if feature_image_alt}}alt="{{feature_image_alt}}" {{/if}}
+    class="post-card-image card-img-top" {{else}} <img src="https://via.placeholder.com/399x243" {{/if}} <div
+    class=card-body">
+  <h5 class="card-title">
+    <a href="{{url}}>
+          {{title}}
+      </a>
+    </h5>
+    <p class=card-text">{{ excerpt }}</p>
+</div>
+</div>
+
+then inside each {{foreach}} loop in each template call the partial with the code:
+{{> "post-card"}}
+
+so complete code will be :
+<div class="posts">
+  {{#foreach posts}}
+    {{> "post-card"}}
+  {{/foreach}}
+</div>
+
+
+
+--------------------------------------------------------------------------------------------------------
+----------------------------------------------------Custom queries-------------
+{{#get}} is a special block helper that makes a custom query to the Ghost API to fetch publicly available data. These
+requests are made server-side before your templates are rendered. This means you can fetch additional data, separate
+from what is provided by default in each context
+check docs for extended use but this is an example:
+inside home.hbs:
+
+<div class="home-header">
+  <h1>Welcome to {{@site.title}}</h1>
+  <p>{{@site.description}}</p>
+
+  {{#get "posts" limit="5" include="authors,tags"}}
+    <h2>Latest posts</h2>
+    <div class="posts-inline">
+      {{#foreach posts limit="3" order="published_at_desc"}}
+        {{> "post-card"}}
+      {{/foreach}}
+    </div>
+  {{/get}}
+</div>
+
+P.S: "limit" is a #get attribute also "filter" is important attribute
+e.g:
+//Get three posts that have the same primary tag as the current post
+{{#post}}
+  {{#get "posts" filter="primary_tag:{{primary_tag.slug}}" limit="3"}}
+    {{#foreach posts}}
+      <li><a href="{{url}}">{{title}}</a></li>
+    {{/foreach}}
+  {{/get}}
+{{/post}}
