@@ -413,3 +413,6 @@ Notes:
     "card_assets": {
       "exclude": ["bookmark", "gallery"]
     },
+
+
+2- when going live and wanting to change your route.yaml go to dashboard->labs->routes and upload the routes.yaml
