@@ -210,8 +210,96 @@ same as author code but replace author by tag:
 </header>
 
 
+6- author-khaled.hbs
+{{!< default}}
+
+{{author}}
+  <div class="image-header" style="background-image: url ('{{img_url cover_image}}')">
+    <h1><small>posts by {{ name}} </small></h1>
+  </div>
+{{/author}}
+
+<div class="page-width">
+  <div class="posts">
+    {{#foreach posts}}
+      {{< 'post-card'}}
+    {{/foreach}}
+  </div>
+</div>
+
+
+7- tag-favpost.hbs
+{!< default}}
+
+{{tag}}
+<div class="image-header" style="background-image: url ('{{img_url feature_image}}')">
+  <h1>{{ name}}</h1>
+</div>
+{{/tag}}
+
+<div class="page-width">
+  <div class="posts">
+    {{#foreach posts}}
+      {{< 'post-card' }} 
+    {{/foreach}} 
+  </div>
+</div>
+
+
+8- custom-header.hbs //same as post but overwriting default header with custom header
+{!< default}} 
+
+{{post}}
+ <div class="image-header" style="background-image: url ('{{img_url feature_image}}')">
+  <h1>{{title}}</h1>
+  </div>
+
+<div class="page-width">
+  <header class="post-header">
+    <span>{{ date published_at format=MMMM DD, YYYY }}</span> //date helper {{date value format="formatString"}}
+  </header>
+  <section class="post-content">
+    {{content}}
+  </section>
+</div>
+{{/post}}
+
+
+9- post-favpost.hbs // want this post to have a list of articles additionally
+//copy standard post first wrapped inside <Article></Article> note the dynamic class="{{post_class}}"
+{{!< default}}
+
+<div class="page-width">
+  <article class="{{post_class}}>"
+  {{#post}} 
+  <header class="post-header">
+    <h1 class="post-title">
+      {{title}}
+    </h1>
+    <span>{{ date published_at format=MMMM DD, YYYY }}</span> //date helper {{date value format="formatString"}}
+  </header>
+  <section class="post-content">
+    {{content}}
+  </section>
+</article>
+  {{/post}}
+</div>
+
+// now use custom query to get simliar posts, filter by primary tag is same as post primary tag and id is not post id (so 
+you don't duplicate the related posts with the favpost)
+
+{{#get 'posts' include="tags,authors" filter="primary_tag:{{post.primary_tag.slug}}+id:-{{post.id}}"
+  <h2>Similar posts</h2>
+  <div class="posts-inline">
+    {{#foreach posts limit="3" order="published_at_desc"}}
+      {{> "post-card"}}
+    {{/foreach}}
+  </div>
+{{/get}}
+
 ------------------------------------------------------------------------------------------------------
---------------------------------------------Partials--------------------
+--------------------------------------------Partials--------------------------------------------------
+
 1- partials is reusable code so for e.g: the code inside the {{#foreach}} loop is repeated in index.hbs, author.hbs, tag.hbs so we can make it a partial:
 in root create a folder called partials
 create a file called post-card.hbs and put inside it:
@@ -240,9 +328,22 @@ so complete code will be :
 </div>
 
 
+2- example of breadcrumbs partial: //this is standard boostrap breadcrumb, only dynamic value is {{title}} of current post
+<nav aria-label="breadcrumbs">
+  <ol class="breadcrumbs">
+    <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+  </ol>
+</nav>
+
+then add to custom post templates for example but check first it's not a page:
+{{^is "page"}}
+  {{< "breadcrumbs"}}
+{{/is}}
 
 --------------------------------------------------------------------------------------------------------
-----------------------------------------------------Custom queries-------------
+----------------------------------------------------Custom queries--------------------------------------
+
 {{#get}} is a special block helper that makes a custom query to the Ghost API to fetch publicly available data. These
 requests are made server-side before your templates are rendered. This means you can fetch additional data, separate
 from what is provided by default in each context
@@ -273,3 +374,42 @@ e.g:
     {{/foreach}}
   {{/get}}
 {{/post}}
+
+------------------------------------------------------------------------------------------------------
+--------------------------------------------------customizing post-card.hbs
+in the partial post-card.hbs i want to display a link for (by author) and the tags of that post 
+//original code:
+<div class=" post-card card">
+  {{#if feature_image}}
+  <img src="{{img_url feature_image size=" m"}}" {{#if feature_image_alt}}alt="{{feature_image_alt}}" {{/if}}
+    class="post-card-image card-img-top" {{else}} <img src="https://via.placeholder.com/399x243" {{/if}} <div
+    class=card-body">
+  <h5 class="card-title">
+    <a href="{{url}}>
+          {{title}}
+      </a>
+    </h5>
+    <p class=card-text">{{ excerpt }}</p>
+
+    // add a link by author
+    {{^is 'author'}} //^ is for negation as in ! means if we are not in author context show by author
+      <a class="btn -btn-primary" href="{{ primary_author.url }}"> BY {{ primary_author.name }}</a>
+    {{is}}
+    // now show tags
+    <div class="card-tags">
+      {{tags}}
+    </div>
+</div>
+</div>
+
+
+
+------------------------------------------------------------------------------------------------------
+Notes:
+
+1- to limit the number of posts per page modify it in package.json
+"config": {
+    "posts_per_page": 10, <-------------------
+    "card_assets": {
+      "exclude": ["bookmark", "gallery"]
+    },
