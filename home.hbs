@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+    {{!-- This block preloads specific assets for the index page --}}
+
+    <head>
+        <meta charset="utf-8">
+        
+        <title>{{meta_title}}</title>
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {{!-- Preload assets --}}
+        {{!-- Preload assets --}}
+        
+        <link rel="stylesheet" href="{{asset "css/app.css"}}" as="style" />
+        
+
+        
+        <link rel="stylesheet" href="{{asset "css/home.css"}}" as="style" />
+        <link rel="stylesheet" href="{{asset "css/listing.css"}}" as="style" />
+        
+        
+        
+        {{!-- This block loads specific styles for the index page --}}
+        
+        <link rel="stylesheet" type="text/css" href="{{asset "css/home.css"}}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{asset "css/listing.css"}}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{asset "css/bootstrap.min.css"}}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{asset "css/aos.css"}}" media="screen" />
+        
+        <link rel="stylesheet" type="text/css" href="{{asset "css/templatemo-nomad-force.css"}}" media="screen" />
+         
+        
+
+        <!-- CSS FILES -->
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+
+        <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+        
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700;900&display=swap" rel="stylesheet"> -->
+
+        
+
+        
+
+<!--
+
+TemplateMo 567 Nomad Force
+
+https://templatemo.com/tm-567-nomad-force
+
+-->
+    </head>
+    <style>
+        /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+    
+        /* source-Arslan */
+        @font-face {
+            font-family: 'Arslan';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Arslan-Regular'),
+            url("{{asset 'fonts/Arslan/arslan.ttf'}}") format('ttf');
+        }
+    
+        /* source-Vazirmatn */
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 100;
+            font-display: swap;
+            src: local('Vazirmatn-Thin'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-Thin'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: local('Vazirmatn-SemiBold'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-SemiBold'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('Vazirmatn-Regular'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-Regular'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: local('Vazirmatn-Medium'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-Medium'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: local('Vazirmatn-Light'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-Light'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 200;
+            font-display: swap;
+            src: local('Vazirmatn-ExtraLight'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-ExtraLight'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 800;
+            font-display: swap;
+            src: local('Vazirmatn-ExtraBold'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-ExtraBold'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local('Vazirmatn-Bold'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-Bold'}}") format('ttf');
+        }
+    
+        @font-face {
+            font-family: 'Vazirmatn';
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: local('Vazirmatn-Black'),
+            url("{{asset 'fonts/Vazirmatn/Vazirmatn-Black'}}") format('ttf');
+        }
+    
+    
+        /* source-sans-pro-regular */
+        @font-face {
+            font-family: 'Source Sans Pro';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: local('SourceSansPro-Regular'),
+            url("{{asset 'fonts/source-sans-pro/latin/source-sans-pro-regular.woff2'}}") format('woff2'),
+            url("{{asset 'fonts/source-sans-pro/latin/source-sans-pro-regular.woff'}}") format('woff');
+        }
+    
+        /* source-sans-pro-600 */
+        @font-face {
+            font-family: 'Source Sans Pro';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: local('SourceSansPro-SemiBold'),
+            url("{{asset 'fonts/source-sans-pro/latin/source-sans-pro-600.woff2'}}") format('woff2'),
+            url("{{asset 'fonts/source-sans-pro/latin/source-sans-pro-600.woff'}}") format('woff');
+        }
+    
+        /* source-sans-pro-700 */
+        @font-face {
+            font-family: 'Source Sans Pro';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: local('SourceSansPro-Bold'),
+            url("{{asset 'fonts/source-sans-pro/latin/source-sans-pro-700.woff2'}}") format('woff2'),
+            url("{{asset 'fonts/source-sans-pro/latin/source-sans-pro-700.woff'}}") format('woff');
+        }
+    
+        /* iconmoon */
+        @font-face {
+            font-family: 'icomoon';
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+            src: url("{{asset 'fonts/icomoon/icomoon.eot?101fc3'}}");
+            src: url("{{asset 'fonts/icomoon/icomoon.eot?101fc3#iefix'}}") format('embedded-opentype'),
+            url("{{asset 'fonts/icomoon/icomoon.ttf?101fc3'}}") format('truetype'),
+            url("{{asset 'fonts/icomoon/icomoon.woff?101fc3'}}") format('woff'),
+            url("{{asset 'fonts/icomoon/icomoon.svg?101fc3#icomoon'}}") format('svg');
+        }
+    </style>
+
+        <body class="{{body_class}}">
+            {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+            
+        <main>
+        
+            <section class="hero" id="hero">
+                <div class="heroText">
+                    <h1 class="text-white mt-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="800">
+                        اسبرسو بالعربي
+                    </h1>
+        
+                    <p class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
+                        تعلم كيف تصنع قهوة <a href="/blog/latte-test/" <strong class="custom-underline">الإسبريسو</strong></a>
+                        كباريستا محترف في المنزل
+                    </p>
+        
+                    <!-- <p class="text-secondary-white-color aos-init aos-animate" data-aos="fade-up" data-aos-delay="1000">
+                                تعلم كيف تصنع قهوة <strong class="custom-underline">الإسبريسو</strong> كباريستا محترف في المنزل  
+                            </p> -->
+                </div>
+        
+                <div class="videoWrapper">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="assets/images/landing-photo.jpg">
+                        <source
+                            src="https://res.cloudinary.com/dsjn8yud5/video/upload/v1663794140/test-video/landing-video_jmnqcn.mp4"
+                            type="video/mp4">
+        
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+        
+                <div class="overlay"></div>
+                <a href="/blog/latte-test" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules"
+                    data-ca3_icon=""></a>
+            </section>
+        
+        
+        </main>
+        
+        <main class="main-wrap">
+            {{!-- Inject styles of the hero image to make it responsive --}}
+           
+            
+            <div class="l-content">
+                <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
+                    <div class="l-grid centered">
+                        {{#get "posts" filter="featured:true" include="authors,tags" limit="5" as |featured|}}
+                        {{#if featured}}
+                        <div class="m-featured-slider swiper js-featured-slider">
+                            <div class="m-featured-slider__list swiper-wrapper">
+                                {{#foreach featured}}
+                                <div class="m-featured-slider__list__item swiper-slide">
+                                    <article class="m-featured-article {{#unless feature_image}}no-picture{{/unless}}">
+                                        <div class="m-featured-article__picture">
+                                            {{#if feature_image}}
+                                            <style>
+                                                #featured-bg-{{id}}{
+                                                    background-image: url({{img_url feature_image size='l'}});
+                                                }
+                                                @media(max-width: 768px) {
+                                                    #featured-bg-{{id}}{
+                                                        background-image: url({{img_url feature_image size='m'}});
+                                                    }
+                                                }
+                                            </style>
+                                            <div id="featured-bg-{{id}}"></div>
+                                            <div id="featured-bg-{{id}}"></div>
+                                            {{/if}}
+                                        </div>
+                                        <div class="m-featured-article__meta">
+                                            <a href="{{primary_author.url}}" class="m-featured-article__author js-tooltip"
+                                                aria-label="{{primary_author.name}}" data-tippy-content="{{t " Posted by"}}
+                                                {{primary_author.name}} {{authors autolink="false" from="2"
+                                                prefix=(t "Among with" ) separator=" , " }}">
+                                                {{#if primary_author.profile_image}}
+                                                <div style="background-image: url({{img_url primary_author.profile_image size="
+                                                    xs"}});"></div>
+                                                {{else}}
+                                                <div style="background-image: url({{asset "
+                                                    images/default-avatar-square-small.jpg"}});"></div>
+                                                {{/if}}
+                                            </a>
+                                            {{#if primary_tag}}
+                                            <a href="{{primary_tag.url}}"
+                                                class="m-featured-article__tag">{{primary_tag.name}}</a>
+                                            {{/if}}
+                                        </div>
+                                        <div class="m-featured-article__ribbon">
+                                            <span class="icon-star"></span>
+                                            <span>{{t "Featured"}}</span>
+                                        </div>
+                                        <a href="{{url}}" class="m-featured-article__content">
+                                            <h2 class="m-featured-article__title js-featured-article-title" title="{{title}}">
+                                                {{title}}
+                                            </h2>
+                                            <div class="m-featured-article__timestamp">
+                                                <span>{{date published_at timeago="true"}}</span>
+                                                <span>&bull;</span>
+                                                <span>{{reading_time minute=(t "1 min read") minutes=(t "% min read")}}</span>
+                                            </div>
+                                        </a>
+                                    </article>
+                                </div>
+                                {{/foreach}}
+                            </div>
+                            <button class="m-icon-button in-featured-articles swiper-button-prev js-featured-slider-button" aria-label="{{t "Previous"}}">
+                                <span class="icon-arrow-left" aria-hidden="true"></span>
+                            </button>
+                            <button class="m-icon-button in-featured-articles swiper-button-next js-featured-slider-button" aria-label="{{t "Next"}}">
+                                <span class="icon-arrow-right" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        {{/if}}
+                        {{/get}}
+                        {{#get "posts"}}
+                            {{> "loop"}}
+                            {{pagination}}
+                        {{/get}}
+                        
+                        {{!-- The tag below iterates over all the posts --}}
+                        
+                    </div>
+                </div>
+                {{!-- Links to Previous/Next posts --}}
+        
+            </div>
+        </main>
+
+            {{!-- Search form 
+            {{> search}}
+        
+            {{!-- The footer --}}
+            {{> footer}} --}}
+        
+            {{!-- Common scripts shared between pages --}}
+            
+        
+            {{!-- The #block helper will pull in data from the #contentFor other template files --}}
+            
+        
+            {{!-- Ghost outputs important scripts and data with this tag --}}
+        </body>
+        
+
+    
+    
+      
+
+
+       
+
+        <!-- JAVASCRIPT FILES -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" crossorigin="anonymous"></script>
+    <!--   <script src="js/jquery.sticky.js"></script> -->
+    <script  src="{{asset "js/aos.js"}}"></script>
+    <script  src="{{asset "js/custom.js"}}"></script>
+    <script  src="{{asset "js/manifest.js"}}"></script>
+    <script  src="{{asset "js/vendor/content-api.min.js"}}"></script>
+    <script  src="{{asset "js/vendor.js"}}"></script>
+    <script  src="{{asset "js/app.js"}}"></script>
+    <script src="{{asset "js/home.js"}}"></script>
+    
+
+    
+</html>

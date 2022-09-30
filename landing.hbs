@@ -1,79 +1,100 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+{{!-- This block preloads specific assets for the index page --}}
 
-        <meta name="description" content="">
-        <meta name="author" content="">
 
-        <title>Nomad Force HTML Bootstrap 5 Template</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CSS FILES -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-        <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-        
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700;900&display=swap" rel="stylesheet"> -->
+  <title>Nomad Force HTML Bootstrap 5 Template</title>
 
-        <link rel="stylesheet" type="text/css" href="{{asset "css/bootstrap.min.css"}}" media="screen" />
-        <link rel="stylesheet" type="text/css" href="{{asset "css/aos.css"}}" media="screen" />
+  <!-- CSS FILES -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
 
-        <link rel="stylesheet" type="text/css" href="{{asset "css/templatemo-nomad-force.css"}}" media="screen" />
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 
-<!--
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700;900&display=swap" rel="stylesheet"> -->
+
+  <link rel="stylesheet" type="text/css" href="{{asset " css/bootstrap.min.css"}}" media="screen" />
+  <link rel="stylesheet" type="text/css" href="{{asset " css/aos.css"}}" media="screen" />
+
+  <link rel="stylesheet" type="text/css" href="{{asset " css/templatemo-nomad-force.css"}}" media="screen" />
+
+  <!--
 
 TemplateMo 567 Nomad Force
 
 https://templatemo.com/tm-567-nomad-force
 
 -->
-    </head>
-    
-    <body>
-    
-        <main>
-        
-            <section class="hero" id="hero">
-                <div class="heroText">
-                    <h1 class="text-white mt-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="800">
-                        اسبرسو بالعربي
-                    </h1>
-        
-                    <p class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
-                        create a great video for your <strong class="custom-underline">website</strong>
-                    </p>
-                </div>
-        
-                <div class="videoWrapper">
-                    <video autoplay="" loop="" muted="" class="custom-video"
-                        poster="videos/792bd98f3e617786c850493560e11c45.jpg">
-                        <source
-                            src="https://res.cloudinary.com/dsjn8yud5/video/upload/v1660867302/test-video/vimeo2_l03ihd.mp4"
-                            type="video/mp4">
-        
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-        
-                <div class="overlay"></div>
-                <a href="/blog/" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
-            </section>
-        
-        
-        
-        
-        
-        </main>
+</head>
 
-       
 
-        <!-- JAVASCRIPT FILES -->
-    <!-- <script src="js/jquery.min.js"></script> -->
-    <!--  <script src="js/bootstrap.bundle.min.js"></script> -->
-    <!--   <script src="js/jquery.sticky.js"></script> -->
-    <script defer src="{{asset "js/aos.js"}}"></script>
-    <script defer src="{{asset "js/custom.js"}}"></script>
+<style>
+  @media only screen and (max-width: 400px) {
+    .mimic {
+      display: block;
+    }
 
-    </body>
+    main {
+      display: none;
+    }
+  }
+</style>
+
+<main>
+
+  <section class="hero" id="hero">
+    <div class="heroText">
+      <h1 class="text-white mt-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="800">
+        اسبرسو بالعربي
+      </h1>
+
+      <p class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
+        تعلم كيف تصنع قهوة <a href="/blog/latte-test/" <strong class="custom-underline">الإسبريسو</strong></a> كباريستا
+        محترف في المنزل
+      </p>
+
+      <!-- <p class="text-secondary-white-color aos-init aos-animate" data-aos="fade-up" data-aos-delay="1000">
+                        تعلم كيف تصنع قهوة <strong class="custom-underline">الإسبريسو</strong> كباريستا محترف في المنزل  
+                    </p> -->
+    </div>
+
+    <div class="videoWrapper">
+      <video autoplay="" loop="" muted="" class="custom-video" poster="assets/images/landing-photo.jpg">
+        <source src="https://res.cloudinary.com/dsjn8yud5/video/upload/v1663794140/test-video/landing-video_jmnqcn.mp4"
+          type="video/mp4">
+
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="overlay"></div>
+    <a href="/blog/" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules"
+      data-ca3_icon=""></a>
+  </section>
+
+
+</main>
+
+
+
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+  crossorigin="anonymous"></script>
+<!--   <script src="js/jquery.sticky.js"></script> -->
+<script defer src="{{asset " js/aos.js"}}"></script>
+<script defer src="{{asset " js/custom.js"}}"></script>
+
+
 </html>

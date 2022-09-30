@@ -18,7 +18,7 @@ taxonomies:  ==> filter posts by tag or by author
   author: /author/{slug}/  ==> localhost/author/khaled  ==> will show  author-khaled.hbs or fallout to author.hbs or fallout to index.hbs
 
   N.B: tag-example2.hbs to create a custom tag template the template has to start with tag-
-       author-ali.hbs to create a custom tag template the template has to start with author-
+       author-ali.hbs to create a custom author template the template has to start with author-
 
   N.B2: setting custom template for a post or page is :
         custom-mytemplate.hbs and then in the ghost admin you can choose default template or mytemplate for any post or a page.
@@ -309,7 +309,7 @@ create a file called post-card.hbs and put inside it:
     class="post-card-image card-img-top" {{else}} <img src="https://via.placeholder.com/399x243" {{/if}} <div
     class=card-body">
   <h5 class="card-title">
-    <a href="{{url}}>
+    <a href="{{url}}> //url of the post in the foreach loop or the page, same for {{title}}
           {{title}}
       </a>
     </h5>
@@ -417,4 +417,4 @@ Notes:
 
 2- when going live and wanting to change your route.yaml go to dashboard->labs->routes and upload the routes.yaml
 
-test deply
+3- ghost actions integrations push any changes you make to the live site through github actions
