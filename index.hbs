@@ -19,9 +19,10 @@ It can be used also as the home page or the default page.
 {{!-- The tag below means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-{{!< default}}
+
 
 {{!-- Special header.hbs partial to generate the <header> tag --}}
+  {{!< default}}
 {{> header background=@site.cover_image}}
 
 <main class="main-wrap">
