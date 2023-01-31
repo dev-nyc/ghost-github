@@ -2102,7 +2102,8 @@ _:-ms-fullscreen {
   }
 }
 .m-article-card__author {
-  position: absolute;
+  /* delete position absolute so not to have the avatar space in each post photo */
+  /* position: absolute; */
   top: 20px;
   left: 20px;
   width: 35px;

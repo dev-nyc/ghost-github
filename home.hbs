@@ -1,6 +1,7 @@
 <!doctype html>
-{{!-- change lanf to arabic will let the header partial render navigation from right to left --}}
-<html lang="ar">
+{{!-- change lang to arabic will let the header partial render navigation from right to left --}}
+{{!--<html lang="ar"> adding ar,en in admin panel does not work --}}
+<html lang="{{@site.locale}}">
     {{!-- This block preloads specific assets for the index page --}}
 
     <head>
