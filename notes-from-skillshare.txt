@@ -418,3 +418,112 @@ Notes:
 2- when going live and wanting to change your route.yaml go to dashboard->labs->routes and upload the routes.yaml
 
 3- ghost actions integrations push any changes you make to the live site through github actions
+
+4- default.hbs
+default.hbs is a base template that contains the boring bits of HTML that exist on every page such as <html>, <head> or <body> as well as the required {{ghost_head}} and {{ghost_foot}} and any HTML for the header and footer.
+
+5- index.hbs and post.hbs extend default.hbs
+
+6- {{content}} is a very simple helper used for outputting post content. It makes sure that your HTML gets output correctly:
+<!-- post.hbs -->
+
+{{!< default}}
+
+<section class="post-full-content">
+    <div class="post-content">
+        {{content}}
+    </div>
+</section>
+
+
+7- {{{body}}}:
+
+<--default.hbs--->
+!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{! Page Meta }}
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+
+    {{! Meta Tags for Responsive Behaviour }}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+
+    {{! Everything else gets inserted here }}
+    {{{body}}}    
+
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+</body>
+</html>
+
+
+<---- index.hbs ---?
+{{!< default}}
+{{> header}}
+<main id="content-wrapper" role="main">
+ {{#foreach posts}}  
+  <article class="{{post_class}}" role="article" itemscope itemtype="http://schema.org/Article">  
+  <header class="post-header">
+  <h1 class="post-title" itemprop="headline"><a href="{{{url}}}" rel="bookmark">{{title}}</a></h1>
+  <span class="post-byline">Posted on <time class="post-date" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">{{date format='dddd DD MMM YYYY'}}</time> by {{author}}</span>
+  </header>
+  <div class="post-excerpt" itemprop="articleBody">
+   {{excerpt}}<span>...</span>
+  </div>
+  <div class="post-readmore">
+  <a class="readmore-link" href="{{{url}}}" rel="bookmark">Read More →</a>
+  </div>
+  </article>  
+ {{/foreach}}
+  {{#if pagination}}
+   {{> pagination}}
+  {{/if}}
+</main>
+{{> footer}}
+
+explanation:
+
+{{!< default}} - This is one of the important handlebars expressions used in Ghost themes. The opening double curly braces are continued with an exclamation mark and less than a symbol. After that is the name of the default template we've coded earlier. What's the effect of this expression? This expression instructs the Ghost engine to copy the template code right below it and insert it replacing the {{{body}}} expression in the file default.hbs. In simple words, we're exporting the index template code and inserting it at the desired place within the default template.
+
+{{> header}} - And, this one is another interesting handlebar expression one may use heavily while designing full-fledged production themes. The greater than symbol right after the opening curly braces indicate the import of external code. After that is the name of the template file from where the code needs to be imported. In simple words, this expression instructs Ghost engine to pull the partial template code header we've coded earlier and to insert it exactly at the place where this expression is written.
+
+
+
+
+7- The {{#contentFor "block-name"}}...{{/contentFor}} helper is used to access and populate the block definitions within the template that’s being inherited. The inherited template is referenced with {{!< template-name}} at the top of the file. If the contentFor is not used then the block will be gracefully skipped.
+e.g:
+<!-- default.hbs -->
+<body>
+    <!-- ... -->
+    {{{block "scripts"}}}
+</body>
+
+
+<!-- page.hbs -->
+{{!< default}}
+
+{{#contentFor "scripts"}}
+    <script>
+        runPageScripts();
+    </script>
+{{/contentFor}}
+
+
+
+8-  <link rel="preload" href="{{asset "css/app.css"}}" as="style" />
+rel= "preload" tells the browser which asset to load before its normal loading order (see browser loading options.jpg)
+as ="style" or script or "image or other (see preload options.jpg)
+
+How do you know which loads before what? checke devtools network>name>waterfall>total duration, play with order, also lighthouse suggestions

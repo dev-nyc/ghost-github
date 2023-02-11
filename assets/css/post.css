@@ -2,6 +2,7 @@
 .hide {
   display: none;
 }
+/* to optimize performance this css is inline
 .sr-only {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(100%);
@@ -11,14 +12,15 @@
   height: 1px;
   overflow: hidden;
   white-space: nowrap;
-}
+} */
 .focusable:focus,
 .l-post-content .kg-button-card a.kg-btn:focus,
 .l-post-content .kg-header-card .kg-header-card-button:focus,
 .l-post-content .kg-product-card .kg-product-card-button:focus,
 .l-post-content
-  button:focus:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:focus:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button:focus {
   box-shadow: 0 0 0 2px var(--primary-subtle-color) !important;
 }
@@ -31,8 +33,9 @@
 .l-post-content .kg-header-card .kg-header-card-button,
 .l-post-content .kg-product-card .kg-product-card-button,
 .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content input:not(.kg-video-card input):not(.kg-audio-card input),
 .l-post-content select,
 .l-post-content textarea,
@@ -79,6 +82,7 @@
 .pointer {
   cursor: pointer;
 }
+/* to optimize performance this css is inline
 .only-desktop {
   display: none;
 }
@@ -87,6 +91,7 @@
     display: block;
   }
 }
+*/
 .l-post-content {
   padding-bottom: 15px;
 }
@@ -561,8 +566,9 @@
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5IiBoZWlnaHQ9IjUiPjxwYXRoIGZpbGw9IiM1NjVlNjAiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTguMzIuNTdhLjI0Ny4yNDcgMCAwMTAgLjM2TDQuNjggNC41N2EuMjQ3LjI0NyAwIDAxLS4zNiAwTC42OC45M2EuMjQ3LjI0NyAwIDAxMC0uMzZsLjM5LS4zOWEuMjQ3LjI0NyAwIDAxLjM2IDBMNC41IDMuMjUgNy41Ny4xOGEuMjQ3LjI0NyAwIDAxLjM2IDBsLjM5LjM5eiIvPjwvc3ZnPg==");
 }
 .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button) {
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button) {
   border: 1px solid var(--primary-foreground-color) !important;
 }
 .l-post-content .kg-bookmark-card {
@@ -882,8 +888,9 @@
 .l-post-content .kg-header-card .kg-header-card-button,
 .l-post-content .kg-product-card .kg-product-card-button,
 .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button {
   display: inline-block;
   color: #333;
@@ -905,8 +912,9 @@
 .l-post-content .kg-header-card .outlined.kg-header-card-button,
 .l-post-content .kg-product-card .outlined.kg-product-card-button,
 .l-post-content
-  button.outlined:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.outlined:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.outlined {
   color: var(--titles-color);
   border: 1px solid var(--primary-foreground-color);
@@ -918,11 +926,13 @@
 .l-post-content .kg-product-card .filled.kg-product-card-button,
 .l-post-content .kg-product-card .primary.kg-product-card-button,
 .l-post-content
-  button.filled:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.filled:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
-  button.primary:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.primary:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.filled,
 .m-button.primary {
   box-shadow: 0 2px 4px var(--button-shadow-color-normal), 0 0 0 transparent;
@@ -934,11 +944,13 @@
 .l-post-content .kg-product-card .filled.kg-product-card-button:hover,
 .l-post-content .kg-product-card .primary.kg-product-card-button:hover,
 .l-post-content
-  button.filled:hover:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.filled:hover:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
-  button.primary:hover:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.primary:hover:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.filled:hover,
 .m-button.primary:hover {
   transform: translateY(-2px);
@@ -948,8 +960,9 @@
 .l-post-content .kg-header-card .filled.kg-header-card-button,
 .l-post-content .kg-product-card .filled.kg-product-card-button,
 .l-post-content
-  button.filled:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.filled:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.filled {
   border-radius: 5px;
   background-color: #fff;
@@ -958,8 +971,9 @@
 .l-post-content .kg-header-card .block.kg-header-card-button,
 .l-post-content .kg-product-card .block.kg-product-card-button,
 .l-post-content
-  button.block:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button.block:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.block {
   display: block;
   width: 100%;
@@ -968,8 +982,9 @@
 .l-post-content .kg-header-card .primary.kg-header-card-button,
 .l-post-content .kg-product-card .primary.kg-product-card-button,
 .l-post-content
-  button.primary:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.primary:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.primary {
   color: #fff;
   background-color: var(--primary-subtle-color);
@@ -991,11 +1006,13 @@
   .kg-product-card-button,
 .l-post-content
   .m-subscribe-section__container.loading
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
-  button.loading:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button),
+  button.loading:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-button.loading,
 .m-subscribe-section__container.loading
   .l-post-content
@@ -1011,8 +1028,9 @@
   .kg-product-card-button,
 .m-subscribe-section__container.loading
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading .m-button {
   cursor: default;
   overflow: hidden;
@@ -1034,11 +1052,13 @@
   .kg-product-card-button:after,
 .l-post-content
   .m-subscribe-section__container.loading
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button):after,
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button):after,
 .l-post-content
-  button.loading:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button):after,
+  button.loading:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button):after,
 .m-button.loading:after,
 .m-subscribe-section__container.loading
   .l-post-content
@@ -1054,8 +1074,9 @@
   .kg-product-card-button:after,
 .m-subscribe-section__container.loading
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button):after,
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button):after,
 .m-subscribe-section__container.loading .m-button:after {
   content: "";
   position: absolute;
@@ -1129,8 +1150,9 @@
   }
 }
 .l-post-content
-  input.in-subscribe-section:not(.kg-video-card input):not(.kg-audio-card
-    input),
+  input.in-subscribe-section:not(.kg-video-card input):not(
+    .kg-audio-card input
+  ),
 .l-post-content select.in-subscribe-section,
 .l-post-content textarea.in-subscribe-section,
 .m-input.in-subscribe-section {
@@ -1346,8 +1368,9 @@
   .m-subscribe-section__container.loading
   a.m-subscribe-section__container.kg-btn
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .kg-button-card
   .m-subscribe-section__container.loading
@@ -1362,13 +1385,15 @@
   .kg-button-card
   .m-subscribe-section__container.loading
   a.m-subscribe-section__container.kg-btn
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .kg-button-card
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   a.kg-btn,
 .l-post-content
   .kg-header-card
@@ -1429,8 +1454,9 @@
   .m-subscribe-section__container.loading
   .m-subscribe-section__container.kg-header-card-button
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .kg-header-card
   .m-subscribe-section__container.loading
@@ -1440,8 +1466,9 @@
   .kg-header-card
   .m-subscribe-section__container.loading
   .m-subscribe-section__container.kg-header-card-button
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .kg-header-card
   .m-subscribe-section__container.loading
@@ -1450,8 +1477,9 @@
 .l-post-content
   .kg-header-card
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .kg-header-card-button,
 .l-post-content
   .kg-product-card
@@ -1512,8 +1540,9 @@
   .m-subscribe-section__container.loading
   .m-subscribe-section__container.kg-product-card-button
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .kg-product-card
   .m-subscribe-section__container.loading
@@ -1523,8 +1552,9 @@
   .kg-product-card
   .m-subscribe-section__container.loading
   .m-subscribe-section__container.kg-product-card-button
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .kg-product-card
   .m-subscribe-section__container.loading
@@ -1533,75 +1563,89 @@
 .l-post-content
   .kg-product-card
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .kg-product-card-button,
 .l-post-content
   .m-subscribe-section__container.loading
   .kg-button-card
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   a.kg-btn,
 .l-post-content
   .m-subscribe-section__container.loading
   .kg-header-card
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .kg-header-card-button,
 .l-post-content
   .m-subscribe-section__container.loading
   .kg-product-card
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .kg-product-card-button,
 .l-post-content
   .m-subscribe-section__container.loading
   .m-subscribe-section__container.m-button
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
   .kg-button-card
   a.kg-btn,
 .l-post-content
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
   .kg-header-card
   .kg-header-card-button,
 .l-post-content
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
   .kg-product-card
   .kg-product-card-button,
 .l-post-content
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .m-button,
 .l-post-content
   .m-subscribe-section__container.loading
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .l-post-content
   .m-subscribe-section__container.loading
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-button-card
@@ -1661,8 +1705,9 @@
   .kg-button-card
   a.m-subscribe-section__container.kg-btn
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-button-card
@@ -1677,13 +1722,15 @@
   .l-post-content
   .kg-button-card
   a.m-subscribe-section__container.kg-btn
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-button-card
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   a.kg-btn,
 .m-subscribe-section__container.loading
   .l-post-content
@@ -1744,8 +1791,9 @@
   .kg-header-card
   .m-subscribe-section__container.kg-header-card-button
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-header-card
@@ -1755,8 +1803,9 @@
   .l-post-content
   .kg-header-card
   .m-subscribe-section__container.kg-header-card-button
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-header-card
@@ -1765,8 +1814,9 @@
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-header-card
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .kg-header-card-button,
 .m-subscribe-section__container.loading
   .l-post-content
@@ -1827,8 +1877,9 @@
   .kg-product-card
   .m-subscribe-section__container.kg-product-card-button
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-product-card
@@ -1838,8 +1889,9 @@
   .l-post-content
   .kg-product-card
   .m-subscribe-section__container.kg-product-card-button
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-product-card
@@ -1848,57 +1900,68 @@
 .m-subscribe-section__container.loading
   .l-post-content
   .kg-product-card
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .kg-product-card-button,
 .m-subscribe-section__container.loading
   .l-post-content
   .m-subscribe-section__container.m-button
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
   .kg-button-card
   a.kg-btn,
 .m-subscribe-section__container.loading
   .l-post-content
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
   .kg-header-card
   .kg-header-card-button,
 .m-subscribe-section__container.loading
   .l-post-content
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
   .kg-product-card
   .kg-product-card-button,
 .m-subscribe-section__container.loading
   .l-post-content
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
   .m-button,
 .m-subscribe-section__container.loading
   .l-post-content
-  button.m-subscribe-section__container:not(.m-icon-button):not(.kg-video-card
-    button):not(.kg-audio-card button):not(.kg-toggle-card button)
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button.m-subscribe-section__container:not(.m-icon-button):not(
+    .kg-video-card button
+  ):not(.kg-audio-card button):not(.kg-toggle-card button)
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading .m-button,
 .m-subscribe-section__container.loading
   .m-subscribe-section__container.m-button
@@ -1918,8 +1981,9 @@
 .m-subscribe-section__container.loading
   .m-subscribe-section__container.m-button
   .l-post-content
-  button:not(.m-icon-button):not(.kg-video-card button):not(.kg-audio-card
-    button):not(.kg-toggle-card button),
+  button:not(.m-icon-button):not(.kg-video-card button):not(
+    .kg-audio-card button
+  ):not(.kg-toggle-card button),
 .m-subscribe-section__container.loading
   .m-subscribe-section__container.m-button
   .m-button {

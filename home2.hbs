@@ -6,33 +6,35 @@
 
 <head>
     <meta charset="utf-8">
-
     <title>{{meta_title}}</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-{{!-- find bugs --}}
 
+    <!-- Preload assets -->
     <link rel="preload" href="{{asset "css/app.css"}}" as="style" />
     <link rel="preload" href="{{asset "js/manifest.js"}}" as="script" />
+    {{!-- this boosted performance from 49 to 95%!! 
     <link rel="preload" href="{{asset "js/vendor/content-api.min.js"}}" as="script" />
-    <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
+     <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" /> --}}
     <link rel="preload" href="{{asset "js/app.js"}}" as="script" />
     
-    {{!-- This #block helper will try to preload page-specific assets --}}
-    {{{block "preload"}}}
+    <link rel="preload" href="{{asset "js/post.js"}}" as="script" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/app.css"}}" media="screen" />
+    {{!-- <link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" media="screen" /> --}}
 
-    {{!-- Preload assets --}}
-    {{#contentFor "preload"}}
+{{!-- this format for stylesheet after running coverage devtools on chrome and using critical css as inline and rest in this format}} --}}
+
+    <link rel="preload" href="{{asset "css/bootstrap.min.css"}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{asset "css/bootstrap.min.css"}}"></noscript>
+
+    <link rel="preload" href="{{asset "css/post.css"}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{asset "css/post.css"}}"></noscript>
+
     
-    <link rel="preload" href="{{asset "css/post.css"}}" as="style" />
-   
-    {{/contentFor}}
+    
     {{!-- Preload assets --}}
-    {{#contentFor "styles"}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" media="screen" />
-    {{/contentFor}}
     <link rel="stylesheet" href="{{asset "css/app.css"}}" as="style" />
-    <link rel="stylesheet" href="{{asset "css/home.css"}}" as="style" />
+    <link rel="defer" href="{{asset "css/home.css"}}" as="style" />
     <link rel="stylesheet" href="{{asset "css/listing.css"}}" as="style" />
 
 
@@ -43,37 +45,43 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset "css/home.css"}}" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{asset "css/listing.css"}}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{asset "css/bootstrap.min.css"}}" media="screen" />
+    
     <link rel="stylesheet" type="text/css" href="{{asset "css/aos.css"}}" media="screen" />
 
     <link rel="stylesheet" type="text/css" href="{{asset "css/templatemo-nomad-force.css"}}" media="screen" />
 
-
-    <!-- CSS FILES -->
+    <!-- Load Google Fonts -->
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-
     <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700;900&display=swap" rel="stylesheet"> -->
 
-
-
-
-
-    <!--
-
-TemplateMo 567 Nomad Force
-
-https://templatemo.com/tm-567-nomad-force 
-
-
-this is for the contentfor helper-->
-    {{{block "styles"}}}
-
-
-
+    <!-- ContentFor Helper 
+    {{{block "styles"}}}  -->
 </head>
+
 <style>
+  
+
+.sr-only {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.only-desktop {
+    display: none;
+}
+
+@media only screen and (min-width: 48rem) {
+    .only-desktop {
+        display: block;
+    }
+}
+
     /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
     /* source-Arslan */
     @font-face {
@@ -201,6 +209,8 @@ this is for the contentfor helper-->
     }
 </style>
 
+
+
 <body class="{{body_class}}">
     {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
 
@@ -213,8 +223,7 @@ this is for the contentfor helper-->
                 </h1>
 
                 <p class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
-                    تعلم كيف تصنع قهوة <a href="/blog/latte-test/" <strong
-                        class="custom-underline">الإسبريسو</strong></a>
+                    تعلم كيف تصنع قهوة <a href="/blog/latte-test/"><strong class="custom-underline">الإسبريسو</strong></a>
                     كباريستا محترف في المنزل
                 </p>
 
@@ -244,12 +253,8 @@ this is for the contentfor helper-->
     </main>
 
     <main class="main-wrap">
-
         {{!-- Inject styles of the hero image to make it responsive --}}
-
-
         <div class="l-content" id="blog-top">
-
             {{> header }}
             <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
                 <div class="l-grid centered">
@@ -325,24 +330,16 @@ this is for the contentfor helper-->
                     {{/if}}
                 {{/get}}
                     {{!-- adding the subscribe button to home page --}}
-
                     {{#get "posts"}}
-                    {{> "loop"}}
-                    {{pagination}}
-                    {{!-- added subscribe section in homepage --}}
+                      {{> "loop"}}
+                      {{pagination}}
                     {{/get}}
-
                     {{!-- The tag below iterates over all the posts --}}
-
                 </div>
             </div>
             {{!-- Links to Previous/Next posts --}}
-
         </div>
-
     </main>
-
-
     {{!-- Search form
     {{> search}}
 
@@ -355,25 +352,9 @@ this is for the contentfor helper-->
     {{!-- The #block helper will pull in data from the #contentFor other template files --}}
 
 
-    {{!-- Ghost outputs important scripts and data with this tag with contentfor helper --}}
-    {{{block "scripts"}}} 
-    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
-        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
-
-<script defer src="{{asset "js/manifest.js"}}"></script>
-<script defer src="{{asset "js/vendor/content-api.min.js"}}"></script>
-<script defer src="{{asset "js/vendor.js"}}"></script>
-<script defer src="{{asset "js/app.js"}}"></script>
-
-{{!-- The #block helper will pull in data from the #contentFor other template files --}}
-{{{block "scripts"}}}
-
-</body>
-
-
-
-
-
+    {{!-- Ghost outputs important scripts and data with this tag with contentfor helper 
+    {{{block "scripts"}}} --}}
+    
 
 
 <!-- JAVASCRIPT FILES -->
@@ -384,27 +365,23 @@ this is for the contentfor helper-->
         document.getElementById('blog-top').scrollIntoView(true)
     }
 </script>
+<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
 <!-- Jthe following script files has to stay here nor in defer to keep language arabic from right to left -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-    crossorigin="anonymous"></script>
-<script src="{{asset "js/aos.js"}}"></script>
-<script src="{{asset "js/custom.js"}}"></script>
-<script src="{{asset "js/home.js"}}"></script>
-<script src="{{asset "js/manifest.js"}}"></script>
-<script src="{{asset "js/app.js"}}"></script>
-<script src="{{asset "js/vendor.js"}}"></script>
-<script src="{{asset "js/post.js"}}"></script>
-<!--   <script src="js/jquery.sticky.js"></script> -->
-<script  src="{{asset "js/custom.js"}}"></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+<script defer src="{{asset "js/aos.js"}}"></script>
+<script defer src="{{asset "js/custom.js"}}"></script>
+<script defer src="{{asset "js/manifest.js"}}"></script>
+<script defer src="{{asset "js/vendor/content-api.min.js"}}"></script>
+<script defer src="{{asset "js/vendor.js"}}"></script>
+<script defer src="{{asset "js/app.js"}}"></script>
+<script defer src="{{asset "js/home.js"}}"></script>
+<script defer src="{{asset "js/post.js"}}"></script>
 
-
-<script  src="{{asset "js/vendor/content-api.min.js"}}"></script>
-
-
-
+</body>
 
 
 </html>

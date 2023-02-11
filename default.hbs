@@ -17,7 +17,8 @@
     <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/app.js"}}" as="script" />
 
-    {{!-- This #block helper will try to preload page-specific assets --}}
+    {{!-- This #block helper will try to preload page-specific assets means everything that has the helper {{#contentFor preload
+    will be output here called by the block "preload" could be any other name also--}}
     {{{block "preload"}}}
 
     {{!-- Styles & Scripts --}}
