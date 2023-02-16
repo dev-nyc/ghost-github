@@ -6,35 +6,33 @@
 
 <head>
     <meta charset="utf-8">
+
     <title>{{meta_title}}</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{{!-- find bugs --}}
 
-    <!-- Preload assets -->
     <link rel="preload" href="{{asset "css/app.css"}}" as="style" />
     <link rel="preload" href="{{asset "js/manifest.js"}}" as="script" />
-    {{!-- this boosted performance from 49 to 95%!! 
     <link rel="preload" href="{{asset "js/vendor/content-api.min.js"}}" as="script" />
-     <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" /> --}}
+    <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/app.js"}}" as="script" />
     
-    <link rel="preload" href="{{asset "js/post.js"}}" as="script" />
-    <link rel="stylesheet" type="text/css" href="{{asset "css/app.css"}}" media="screen" />
-    {{!-- <link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" media="screen" /> --}}
+    {{!-- This #block helper will try to preload page-specific assets --}}
+    {{{block "preload"}}}
 
-{{!-- this format for stylesheet after running coverage devtools on chrome and using critical css as inline and rest in this format}} --}}
-
-    <link rel="preload" href="{{asset "css/bootstrap.min.css"}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{asset "css/bootstrap.min.css"}}"></noscript>
-
-    <link rel="preload" href="{{asset "css/post.css"}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{asset "css/post.css"}}"></noscript>
-
-    
-    
     {{!-- Preload assets --}}
+    {{#contentFor "preload"}}
+    
+    <link rel="preload" href="{{asset "css/post.css"}}" as="style" />
+   
+    {{/contentFor}}
+    {{!-- Preload assets --}}
+    {{#contentFor "styles"}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" media="screen" />
+    {{/contentFor}}
     <link rel="stylesheet" href="{{asset "css/app.css"}}" as="style" />
-    <link rel="defer" href="{{asset "css/home.css"}}" as="style" />
+    <link rel="stylesheet" href="{{asset "css/home.css"}}" as="style" />
     <link rel="stylesheet" href="{{asset "css/listing.css"}}" as="style" />
 
 
@@ -45,43 +43,18 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset "css/home.css"}}" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{asset "css/listing.css"}}" media="screen" />
-    
-    <link rel="stylesheet" type="text/css" href="{{asset "css/aos.css"}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/optimized-bootstrap.css"}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/optimized-aos.css"}}" media="screen" />
 
     <link rel="stylesheet" type="text/css" href="{{asset "css/templatemo-nomad-force.css"}}" media="screen" />
 
-    <!-- Load Google Fonts -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;700;900&display=swap" rel="stylesheet"> -->
 
-    <!-- ContentFor Helper 
-    {{{block "styles"}}}  -->
+
+
+
+
 </head>
-
 <style>
-  
-
-.sr-only {
-    clip: rect(0 0 0 0);
-    -webkit-clip-path: inset(100%);
-    clip-path: inset(100%);
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.only-desktop {
-    display: none;
-}
-
-@media only screen and (min-width: 48rem) {
-    .only-desktop {
-        display: block;
-    }
-}
-
     /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
     /* source-Arslan */
     @font-face {
@@ -209,8 +182,6 @@
     }
 </style>
 
-
-
 <body class="{{body_class}}">
     {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
 
@@ -223,7 +194,8 @@
                 </h1>
 
                 <p class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
-                    تعلم كيف تصنع قهوة <a href="/blog/latte-test/"><strong class="custom-underline">الإسبريسو</strong></a>
+                    تعلم كيف تصنع قهوة <a href="/blog/latte-test/" <strong
+                        class="custom-underline">الإسبريسو</strong></a>
                     كباريستا محترف في المنزل
                 </p>
 
@@ -233,13 +205,13 @@
                             class="ca3-scroll-down-link ca3-scroll-down-arrow" -->
             </div>
 
-            <div class="videoWrapper">
-                <video autoplay="" loop="" muted="" class="custom-video" poster="assets/images/landing-photo.jpg">
-                    <source
-                        src="https://res.cloudinary.com/dsjn8yud5/video/upload/v1663794140/test-video/landing-video_jmnqcn.mp4"
-                        type="video/mp4">
 
-                    Your browser does not support the video tag.
+            <div class="videoWrapper">
+                <video autoplay="" loop="" muted="" class="custom-video" poster="https://res.cloudinary.com/dsjn8yud5/image/upload/f_auto,q_auto:eco/v1676497051/test-video/landing-photo_hligu8.jpg">
+                <source src="https://res.cloudinary.com/dsjn8yud5/video/upload/f_auto,q_auto/v1663794140/test-video/landing-video_jmnqcn.mp4"
+                    type="video/mp4">
+
+                Your browser does not support the video tag.
                 </video>
             </div>
 
@@ -354,7 +326,8 @@
 
     {{!-- Ghost outputs important scripts and data with this tag with contentfor helper 
     {{{block "scripts"}}} --}}
-    
+
+   </body> 
 
 
 <!-- JAVASCRIPT FILES -->
@@ -381,7 +354,7 @@
 <script defer src="{{asset "js/home.js"}}"></script>
 <script defer src="{{asset "js/post.js"}}"></script>
 
-</body>
+
 
 
 </html>
