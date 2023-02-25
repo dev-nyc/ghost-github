@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudinary.com/
+HostUrl=https://api.cloudinary.com/v1_1/dsjn8yud5/image/download?api_key=341493983517953&attachment=true&audit_context=eyJhY3Rvcl90eXBlIjoidXNlciIsImFjdG9yX2lkIjoiOGUxMmM4Y2VkNDlhMTA2Njg2MDQyYTQxN2JlNDQ5YmQiLCJ1c2VyX2V4dGVybmFsX2lkIjoiODU0OGNlOGM3OWNjODAwMDIzMTBkZjM5NmNhYTkxIiwidXNlcl9jdXN0b21faWQiOiJrb2tvbmo4MEBnbWFpbC5jb20iLCJjb21wb25lbnQiOiJjb25zb2xlIn0%3D&public_id=test-video%2Flanding-photo_hligu8&signature=457d9ec4cccb198e77a983cc3196bac6e64bd175&source=ml&target_filename=landing-photo_hligu8.jpg&timestamp=1677275421&type=upload
