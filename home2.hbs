@@ -32,14 +32,21 @@
 <style>
     /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
     /* source-Arslan */
-    @font-face {
+    /* @font-face {
         font-family: 'Arslan';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
         src: local('Arslan-Regular'),
         url("{{asset 'fonts/Arslan/arslan.ttf'}}") format('ttf');
-    }
+    } */
+    @font-face {
+    font-family: arslan;
+    /* src: url(../fonts/Arslan/arslan.ttf); */
+    src: url({{asset "fonts/Arslan/arslan.woff2"}}) format("woff2");
+    font-style: normal;
+    font-weight: normal;
+} 
     /* source-Vazirmatn */
     @font-face {
         font-family: 'Vazirmatn';
@@ -270,6 +277,7 @@
             {{!-- Links to Previous/Next posts --}}
         </div>
     </main>
+    {{> footer}}
    </body> 
 <!-- JAVASCRIPT FILES -->
 <script type='text/javascript'>
