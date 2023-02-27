@@ -17,7 +17,7 @@
     <link rel="preload" href="{{asset "js/manifest.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/vendor/content-api.min.js"}}" as="script" />
     <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
-    <link rel="preload" href="{{asset "js/app.js"}}" as="script" />
+    <link rel="preload" href="{{asset "js/vendor.js"}}" as="script" />
     <link rel="preload" href="{{asset "css/post.css"}}" as="style" />    {{!-- Preload assets --}}
     <link rel="stylesheet" type="text/css" href="{{asset "css/post.css"}}" media="screen" />
     <link rel="stylesheet" href="{{asset "css/app.css"}}" as="style" />
@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset "css/optimized-bootstrap.css"}}" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{asset "css/optimized-aos.css"}}" media="screen" />
     <link rel="stylesheet" type="text/css" href="{{asset "css/templatemo-nomad-force.css"}}" media="screen" />
+    <link rel="preload" href="{{asset "js/post.js"}}" as="script" />
 </head>
 <style>
     /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
@@ -162,6 +163,10 @@
         url("{{asset 'fonts/icomoon/icomoon.woff?101fc3'}}") format('woff'),
         url("{{asset 'fonts/icomoon/icomoon.svg?101fc3#icomoon'}}") format('svg');
     }
+    :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+        --ghost-accent-color: #ff7061;
+      }
 </style>
 
 <body class="{{body_class}}">
@@ -277,7 +282,25 @@
             {{!-- Links to Previous/Next posts --}}
         </div>
     </main>
+    {{#if @site.members_enabled}}
+          <section class="m-subscribe-section js-newsletter">
+            <div class="l-wrapper in-post">
+              <div class="m-subscribe-section__content">
+                <div class="m-subscribe-section__text">
+                  <h4 class="m-subscribe-section__title">{{t "Subscribe to our newsletter"}}</h4>
+                  <p class="m-subscribe-section__description">
+                    {{t "Get the latest posts delivered right to your inbox."}}
+                  </p>
+                </div>
+                <div class="m-subscribe-section__form">
+                  {{> "newsletter-form"}}
+                </div>
+              </div>
+            </div>
+          </section>
+        {{/if}}
     {{> footer}}
+   <div data-portal="signup"></div>
    </body> 
 <!-- JAVASCRIPT FILES -->
 <script type='text/javascript'>
@@ -287,6 +310,7 @@
         document.getElementById('blog-top').scrollIntoView(true)
     }
 </script>
+
 <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
         integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
 <!-- Jthe following script files has to stay here nor in defer to keep language arabic from right to left -->
@@ -301,5 +325,5 @@
 <script defer src="{{asset "js/vendor.js"}}"></script>
 <script defer src="{{asset "js/app.js"}}"></script>
 <script defer src="{{asset "js/home.js"}}"></script>
-<script defer src="{{asset "js/post.js"}}"></script>
+
 </html>
